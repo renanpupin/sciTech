@@ -1,1 +1,90 @@
-/* Empty. Add your own CSS if you like */
+.grid{
+	-webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.image-grid-item{
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+}
+
+.image-grid-item .category-name{
+	position: relative;
+	top: 35%;
+	text-align: center;
+	/*left: 30%;*/
+	font-size: 26px;
+	/*display: flex;*/
+    height: 0;
+}
+
+.image-grid-item .category-name i{
+	font-size: 40px;
+	/*padding: 30px;*/
+}
+
+.image-grid-item .category-name .category-text{
+	padding: 15px;
+}
+
+.image-grid-item .category-background{
+	width: 100%;
+	height: auto;
+	max-height: 100%;
+	/*position: relative;*/
+}
+
+.image-grid-item .category-icon{
+}
+
+.image-grid-item .category-notification{
+	position: relative;
+    height: 0;
+	top: -20%;
+	right: -35%;
+
+}
+.image-grid-item .category-notification .notification-icon{
+    font-size: 40px;
+}
+
+.category-detail-header{
+	height: 200px;
+}
+
+.category-detail-header .category-info{
+	/*position: relative;*/
+	/*top: 120px;*/
+	color: #fff;
+	/*text-align: center;*/
+	/*left: 30%;*/
+	font-size: 32px;
+	/*display: flex;*/
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.category-detail-header .category-name{
+	position: relative;
+	top: 150px;
+	left: 30px;
+}
+.category-detail-header .category-name .category-text{
+	display: inline-block;
+}
+
+.category-detail-header .category-name .category-icon{
+	font-size: 40px;
+}
+
+.category-detail-header .category-background{
+	width: 100%;
+	max-height: 200px;
+}
+
+
+.card.post .item-image{
+	height: 350px;
+}

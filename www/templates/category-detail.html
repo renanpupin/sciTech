@@ -1,0 +1,46 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{category.name}}">
+  <ion-content class="padding">
+
+    <div class="category-detail-header" style="background-image: url('{{category.image}}'); background-size: cover;">
+      <!-- <img class="category-background" src="{{category.image}}"> -->
+      
+      <div class="category-info">
+        <div class="category-name">
+          <i class="icon category-icon {{category.icon}}"></i>
+          <div class="category-text">{{category.name}}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="category-detail-news">
+      <div class="list card post">
+
+        <div class="item item-image">
+          <img src="img/img/galaxy.jpg">
+        </div>
+
+          <div class="item row">
+          <div class="col col-75">
+          <p>Lorem Ipsum</p>
+          <p>Category</p>
+          </div>
+          <div class="col col-25">
+            <a href="#">
+              <i class="icon ion-ios-star-outline"></i>
+            </a>
+            <a href="#">
+              <i class="icon ion-android-share-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

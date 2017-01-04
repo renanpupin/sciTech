@@ -21,3 +21,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+//custom code
+.image-grid-item{
+	img{
+		width: 100%;
+	}
+	.category-icon{
+		position: relative;
+		top: 15px;
+		left: 10px;
+	}
+}
