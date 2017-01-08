@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 .controller('FeedCtrl', function($scope) {})
 
-.controller('CategoriesCtrl', function($scope, Chats, Categories) {
+.controller('CategoriesCtrl', function($scope,$state, Chats, Categories) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -16,10 +16,21 @@ angular.module('starter.controllers', [])
   $scope.categories = Categories.getAll();
 
   $scope.view = "grid";
-  
+
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
+  };
+
+  $scope.categoryDetail = function(categoryId){
+    $state.go('tab.category-detail',{categoryId: categoryId});  
+  };
+
+  $scope.toggleNotification = function(category,e){
+
+      category.notify=!category.notify;
+
+      e.stopPropagation();
   };
 })
 

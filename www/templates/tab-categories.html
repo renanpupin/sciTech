@@ -8,7 +8,7 @@
 				List
 			</a>
 		</div>
-		
+
 		<div class="col col-50">
 			<a ng-click="view = 'grid'">
 				Grid
@@ -19,18 +19,18 @@
 
     <ion-list ng-show="view == 'list'">
 
-      <ion-item class="item item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap" href="#/tab/categories/{{category.id}}">
+      <ion-item class="item item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap"  ng-click="categoryDetail({{category.id}});"> <!--href="#/tab/categories/{{category.id}}">-->
         <i class="icon {{category.icon}}"></i>
         {{category.name}}
-        
-        <i class="icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}"></i>
+
+        <i class="icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}" ng-click="toggleNotification(category,$event);"></i>
       </ion-item>
 
     </ion-list>
 
     <div class="row grid" ng-show="view == 'grid'">
 
-		<a class="col col-50 image-grid-item" ng-repeat="category in categories" href="#/tab/categories/{{category.id}}">
+		<a class="col col-50 image-grid-item" ng-repeat="category in categories" ng-click="categoryDetail({{category.id}});">
 		<!-- <div class="col col-50 image-grid-item" ng-repeat="category in categories"> -->
 			<!-- <div class="category-background" style="background-image: url({{category.image}})"> -->
 				<div class="category-name">
@@ -39,9 +39,9 @@
 		        </div>
 
 		        <img class="category-background" src="{{category.image}}">
-		        
+
 		        <div class="category-notification">
-		        	<i class="icon notification-icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}"></i>
+		        	<i class="icon notification-icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}" ng-click="toggleNotification(category,$event);"></i>
 		        </div>
 
 	        <!-- </div> -->
@@ -51,7 +51,7 @@
         <i class="icon category-icon {{category.icon}}"></i>
         {{category.name}}
         <img class="" src="{{category.image}}">
-        
+
         <i class="icon notification-icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}"></i>
       </a> -->
 
