@@ -1,14 +1,22 @@
 <ion-view view-title="Profile">
   <ion-content class="padding">
 
-	<img src="../img/adam.jpg" style="border-radius: 50%; width: 150px; height: 150px;">
+  	<div class="row">
+  		<div class="col col-50">
+			<img src="../img/adam.jpg" style="border-radius: 50%; width: 100px; height: 100px;">
+		</div>
+  		<div class="col col-50">
+			<h4>John Doe</h4>
+			<br>
+			<span>Badges <b style="color: gold;">35</b></span>
+		</div>
 
-	<span>Level 1</span>
-	<span>Experiência 40/50</span>
+		<!-- <span>Statiscs 1</span> -->
+  	</div>
 
     <div class="list">
 	  <label class="item item-input item-floating-label">
-	    <span class="input-label">Nome</span>
+	    <span class="input-label">Name</span>
 	    <input type="text" placeholder="Name">
 	  </label>
 	  <label class="item item-input item-floating-label">
@@ -21,8 +29,8 @@
 	  </label>
 	</div>
 
-	<button class="button button-positive">
-	  Salvar
+	<button class="button button-positive btn-save-profile">
+	  Save
 	</button>
 
   </ion-content>

@@ -1,78 +1,7 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
-
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
-})
-
-.factory('Favorites', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var favorites = [{
-    id: 0,
-    name: 'Lorem Ipsum',
-    category: 'Ciência',
-    image: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Lorem Ipsum',
-    category: 'Tecnologia',
-    image: 'img/max.png'
-  }];
-
-  return {
-    getAll: function(page) {
-      return favorites;
-    }
-  };
-})
-
-.factory('Categories', function() {
+.factory('Categories', function($http, $rootScope) {
+// .factory('Categories', ['rootScope', function ($rootScope) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -110,50 +39,88 @@ angular.module('starter.services', [])
 
   return {
     getAll: function() {
-      return categories;
+      // console.log($rootScope.server_url);
+      var url = $rootScope.server_url + "/category";
+      // console.log(url);
+
+      return $http.get(url);
     },
     get: function(categoryId) {
-      for (var i = 0; i < categories.length; i++) {
-        if (categories[i].id === parseInt(categoryId)) {
-          return categories[i];
-        }
-      }
-      return null;
+      // for (var i = 0; i < categories.length; i++) {
+      //   if (categories[i].id === parseInt(categoryId)) {
+      //     return categories[i];
+      //   }
+      // }
+      // return null;
+
+      var url = $rootScope.server_url + "/category/"+categoryId;
+      // console.log(url);
+
+      return $http.get(url);
     }
   };
 })
 
-.factory('Posts', function() {
+.factory('Posts', function($http, $rootScope) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var posts = [{
-    id: 0,
-    name: 'Lorem Ipsums',
-    category: {"id": "1", "name": "Ciência"},
-    image: 'img/ciencia.png',
-    date: new Date(),
-    is_favorite: false
-  }, {
-    id: 1,
-    name: 'Lorem Tec',
-    category: {"id": "2", "name": "Tecnologia"},
-    image: 'img/perry.png',
-    date: new Date(),
-    is_favorite: false
-  }];
+  // var posts = [{
+  //   id: 0,
+  //   name: 'Lorem Ipsums',
+  //   category: {"id": "1", "name": "Ciência"},
+  //   image: 'img/ciencia.png',
+  //   date: new Date(),
+  //   is_favorite: false
+  // }, {
+  //   id: 1,
+  //   name: 'Lorem Tec',
+  //   category: {"id": "2", "name": "Tecnologia"},
+  //   image: 'img/perry.png',
+  //   date: new Date(),
+  //   is_favorite: false
+  // }];
 
   return {
     getAll: function() {
-      return posts;
+      var url = $rootScope.server_url + "/news";
+      return $http.get(url);
     },
-    get: function(postId) {
-      for (var i = 0; i < posts.length; i++) {
-        if (posts[i].id === parseInt(postId)) {
-          return posts[i];
-        }
-      }
-      return null;
+    get: function(newsId) {
+      var url = $rootScope.server_url + "/news/"+newsId;
+      return $http.get(url);
+    },
+    getByCategory: function(categoryId) {
+      var url = $rootScope.server_url + "/news/category/"+categoryId;
+      return $http.get(url);
+    },
+    setFavorite: function(newsId) {
+      var url = $rootScope.server_url + "/news/favorite/"+newsId;
+      return $http.get(url);
+    }
+  };
+})
+
+.factory('Favorites', function($http, $rootScope) {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  // var favorites = [{
+  //   id: 0,
+  //   name: 'Lorem Ipsum',
+  //   category: 'Ciência',
+  //   image: 'img/ben.png'
+  // }, {
+  //   id: 1,
+  //   name: 'Lorem Ipsum',
+  //   category: 'Tecnologia',
+  //   image: 'img/max.png'
+  // }];
+
+  return {
+    getAll: function() {
+      var url = $rootScope.server_url + "/news";
+      return $http.get(url);
     }
   };
 })

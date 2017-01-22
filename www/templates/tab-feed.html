@@ -2,7 +2,7 @@
 
   <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs">
-      <a class="tab-item" href="#">
+      <a class="tab-item active" href="#">
         TODOS
       </a>
       <a class="tab-item" href="#">
@@ -16,49 +16,30 @@
 
   <ion-content class="padding">
 	
-	<div class="list card post">
+	<div class="list card post" ng-repeat="post in posts">
 
-	  <div class="item item-image">
-	    <img src="img/galaxy.jpg">
-	  </div>
+        <div class="item item-image">
+          <a ng-click="postDetail(post._id)">
+            <img src="{{post.cover_image}}">
+          </a>
+        </div>
 
-	  	<div class="item row">
-		  <div class="col col-75">
-			<p>Lorem Ipsum</p>
-			<p>Category</p>
-		  </div>
-		  <div class="col col-25">
-		  	<a href="#">
-		  		<i class="icon ion-ios-star-outline"></i>
-	  		</a>
-	  		<a href="#">
-		  		<i class="icon ion-android-share-alt"></i>
-	  		</a>
-		  </div>
-		</div>
-	</div>
-
-	<div class="list card post">
-
-	  <div class="item item-image">
-	    <img src="img/galaxy.jpg">
-	  </div>
-
-	  	<div class="item row">
-		  <div class="col col-75">
-			<p>Lorem Ipsum</p>
-			<p>Category</p>
-		  </div>
-		  <div class="col col-25">
-		  	<a href="#">
-		  		<i class="icon ion-ios-star-outline"></i>
-	  		</a>
-	  		<a href="#">
-		  		<i class="icon ion-android-share-alt"></i>
-	  		</a>
-		  </div>
-		</div>
-	</div>
+          <div class="item row">
+          <div class="col col-75">
+          <p>{{post.title}}</p>
+          <p>{{category.name}}</p>
+          </div>
+          <div class="col col-25 item-socials">
+            <a ng-click="setFavorite(post._id)">
+              <i ng-show="favorited == false" class="icon ion-ios-star-outline"></i>
+              <i ng-show="favorited == true" class="icon ion-ios-star"></i>
+            </a>
+            <a>
+              <i class="icon ion-android-share-alt"></i>
+            </a>
+          </div>
+        </div>
+    </div>
 
 	<!-- <div class="floating-ad fixed-outside" style="position: absolute; bottom: -30px; width: 100%; border: 1px solid black; background: #E7E7E7;">
 		ADAD

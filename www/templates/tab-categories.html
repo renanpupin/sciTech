@@ -1,25 +1,26 @@
 <ion-view view-title="Categories">
   <ion-content>
 
-	<div class="row">
-		<div class="col col-50">
-			<a ng-click="view = 'list'">
+	<div class="row filters">
+		<div class="col col-50 text-center">
+			<a ng-click="view = 'list'" ng-class="{'active': (view == 'list'), 'not-active': (view == 'grid')}">
 				<i class="icon ion-ios-list-outline"></i>
 				List
 			</a>
 		</div>
 
-		<div class="col col-50">
-			<a ng-click="view = 'grid'">
-				Grid
+		<div class="col col-50 text-center">
+			<a ng-click="view = 'grid'" ng-class="{'active': (view == 'grid'), 'not-active': (view == 'list')}">
 				<i class="icon ion-grid"></i>
+				Grid
 			</a>
 		</div>
 	</div>
 
+    <!-- <ion-list ng-show="view == 'list'" class="{{view == 'list' ? 'active' : ''}}"> -->
     <ion-list ng-show="view == 'list'">
 
-      <ion-item class="item item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap"  ng-click="categoryDetail({{category.id}});"> <!--href="#/tab/categories/{{category.id}}">-->
+      <ion-item class="item item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap" ng-click="categoryDetail(category._id)"> <!--href="#/tab/categories/{{category.id}}">-->
         <i class="icon {{category.icon}}"></i>
         {{category.name}}
 
@@ -29,8 +30,9 @@
     </ion-list>
 
     <div class="row grid" ng-show="view == 'grid'">
+    	<!-- {{categories}} -->
 
-		<a class="col col-50 image-grid-item" ng-repeat="category in categories" ng-click="categoryDetail({{category.id}});">
+		<a class="col col-50 image-grid-item" ng-repeat="category in categories" ng-click="categoryDetail(category._id)">
 		<!-- <div class="col col-50 image-grid-item" ng-repeat="category in categories"> -->
 			<!-- <div class="category-background" style="background-image: url({{category.image}})"> -->
 				<div class="category-name">
@@ -38,7 +40,7 @@
 			        <div class="category-text">{{category.name}}</div>
 		        </div>
 
-		        <img class="category-background" src="{{category.image}}">
+		        <img class="category-background" src="{{category.cover_image}}">
 
 		        <div class="category-notification">
 		        	<i class="icon notification-icon {{category.notify == true ? 'ion-android-notifications' : 'ion-android-notifications-none'}}" ng-click="toggleNotification(category,$event);"></i>

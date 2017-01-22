@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +20,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    $rootScope.server_url = "http://localhost:3000/api";
   });
 })
 
@@ -73,25 +75,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-
+  .state('tab.feed-detail', {
+    url: '/feed/:postId',
+    views: {
+      'tab-feed': {
+        templateUrl: 'templates/feed-detail.html',
+        controller: 'FeedDetailCtrl'
+      }
+    }
+  })
   .state('tab.categories', {
-      url: '/categories',
-      views: {
-        'tab-categories': {
-          templateUrl: 'templates/tab-categories.html',
-          controller: 'CategoriesCtrl'
-        }
+    url: '/categories',
+    views: {
+      'tab-categories': {
+        templateUrl: 'templates/tab-categories.html',
+        controller: 'CategoriesCtrl'
       }
-    })
-    .state('tab.category-detail', {
-      url: '/categories/:categoryId',
-      views: {
-        'tab-categories': {
-          templateUrl: 'templates/category-detail.html',
-          controller: 'CategoryDetailCtrl'
-        }
+    }
+  })
+  .state('tab.category-detail', {
+    url: '/categories/:categoryId',
+    views: {
+      'tab-categories': {
+        templateUrl: 'templates/category-detail.html',
+        controller: 'CategoryDetailCtrl'
       }
-    })
+    }
+  })
 
   .state('tab.favorites', {
     url: '/favorites',
@@ -116,6 +126,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/categories');
+  $urlRouterProvider.otherwise('/tab/feed');
 
 });

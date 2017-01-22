@@ -1,6 +1,8 @@
 .grid{
 	-webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    padding-top: 2px;
+    border-top: 1px solid #e7e7e7;
 }
 
 .image-grid-item{
@@ -8,16 +10,18 @@
 	text-decoration: none;
 	text-align: center;
 	display: inline-block;
+    padding-top: 0;
 }
 
 .image-grid-item .category-name{
 	position: relative;
-	top: 35%;
+	top: 25%;
 	text-align: center;
 	/*left: 30%;*/
 	font-size: 26px;
 	/*display: flex;*/
     height: 0;
+    text-shadow: 1px 1px #000;
 }
 
 .image-grid-item .category-name i{
@@ -26,7 +30,7 @@
 }
 
 .image-grid-item .category-name .category-text{
-	padding: 15px;
+	/*padding: 15px;*/
 }
 
 .image-grid-item .category-background{
@@ -42,12 +46,12 @@
 .image-grid-item .category-notification{
 	position: relative;
     height: 0;
-	top: -20%;
-	right: -35%;
+	top: -27%;
+	right: -40%;
 
 }
 .image-grid-item .category-notification .notification-icon{
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .category-detail-header{
@@ -86,5 +90,35 @@
 
 
 .card.post .item-image{
-	height: 350px;
+	/*height: 350px;*/
+}
+
+.filters{
+	font-size: 22px;
+}
+.filters a{
+	padding-left: 10px;
+	cursor: pointer;
+	/*border-radius: 3px;*/
+	padding: 5px;
+	color: initial;
+}
+
+.filters a.active{
+	/*color: #fff;*/
+	/*background-color: #387ef5;*/
+	color: #387ef5;
+	border-bottom: 2px solid #387ef5;
+}
+
+.item-socials{
+	font-size: 28px;
+	text-decoration: none;
+}
+
+.btn-save-profile{
+	margin: 0 auto;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: block;
 }
